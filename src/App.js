@@ -3,6 +3,7 @@ import "./App.css";
 import Greeting from "./components/Greeting";
 import Aloha from "./components/Aloha";
 import React from "react";
+import AlohaList from "./components/AlohaList";
 
 const user = {
   id: 222,
@@ -29,27 +30,8 @@ const admin = {
 // }
 
 class App extends React.Component {
-  state = {
-    user: user,
-  };
-
-  changeName = () => {
-    const newName = prompt("Enter new name ");
-    const newUser = {
-      ...this.state.user,
-      name: newName,
-    };
-    this.setState({
-      user: newUser,
-    });
-  };
   render() {
-    return (
-      <>
-        <Aloha name={this.state.user.name} />
-        <button onClick={this.changeName}>Change Name</button>
-      </>
-    );
+    return <AlohaList />;
   }
 }
 
