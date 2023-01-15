@@ -3,9 +3,24 @@ import Timer from "./components/Timer";
 import React from "react";
 
 class App extends React.Component {
+  state = {
+    isVisible: true,
+  };
   render() {
-    // return <AlohaList />;
-    return <Timer />;
+    return (
+      <main>
+        <button
+          onClick={() =>
+            this.setState({
+              isVisible: !this.state.isVisible,
+            })
+          }
+        >
+          Toogle
+        </button>
+        {this.state.isVisible && <Timer/>}
+      </main>
+    );
   }
 }
 
