@@ -8,12 +8,6 @@ class Aloha extends Component {
       id: 0
     };
   }
-  // handleClick = () => {
-  //   this.setState({
-  //     isGreeting: !this.state.isGreeting,
-  //     id: this.state.id+1
-  //   });
-  // };
  
   render() {
     const { name, sortUsers, makeFavorite, id } = this.props;

@@ -18,7 +18,6 @@ class Clicker extends Component {
       <div>
         <DisplayClicker click_counted = {click_count}/>
         <ClickerController click_func = {this.countClicker} />
-        {/* <button onClick={this.countClicker}>Click</button> */}
       </div>
     );
   }

@@ -1,39 +1,45 @@
-import { clear } from "@testing-library/user-event/dist/clear";
 import React, { Component } from "react";
 
 class Timer extends Component {
   state = {
     number: 10,
+    isDoubled: true,
   };
 
   decrementNumber = () => {
-    const { number } = this.state;
+    const { number, isDoubled } = this.state;
     this.setState({
       number: number - 1,
     });
+    if (isDoubled) {
+      console.log("double");
+      this.setState((updatedState) => {
+        const newState = {
+          number: updatedState.number - 1,
+        };
+        return newState;
+      });
+    }
   };
   componentDidMount() {
-    console.log("kek");
-    this.timerID = setInterval(this.decrementNumber, 1000);
+    console.log("kek mount");
   }
 
   componentDidUpdate() {
+    console.log("did update");
     const { number } = this.state;
-    if (number === 0) {
-      clearInterval(this.timerID);
-    }
   }
 
   componentWillUnmount() {
     console.log("kek unmount");
-    clearInterval(this.timerID)
+    clearInterval(this.timerID);
   }
   render() {
     const { number } = this.state;
-    // setInterval(this.decrementNumber, 1000);
     return (
       <div>
         <p>{number}</p>
+        <button onClick={this.decrementNumber}>Decrement</button>
       </div>
     );
   }

@@ -42,7 +42,6 @@ class AlohaList extends Component {
         <Aloha
           id={user.id}
           name={user.name}
-          // sortUsers={this.sortUsers}
           makeFavorite={this.makeFavorite}
         />
       </li>
