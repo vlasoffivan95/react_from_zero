@@ -28,7 +28,6 @@ class Timer extends Component {
 
   componentDidUpdate() {
     console.log("did update");
-    const { number } = this.state;
   }
 
   componentWillUnmount() {
