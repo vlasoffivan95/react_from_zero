@@ -8,9 +8,9 @@ class Timer extends Component {
 
   decrementNumber = () => {
     const { number, isDoubled } = this.state;
-    this.setState({
-      number: number - 1,
-    });
+    this.setState((state) => ({
+      number: state.number - 1,
+    }));
     if (isDoubled) {
       console.log("double");
       this.setState((updatedState) => {
@@ -23,6 +23,7 @@ class Timer extends Component {
   };
   componentDidMount() {
     console.log("kek mount");
+    this.timerID = setInterval(this.decrementNumber, 1000)
   }
 
   componentDidUpdate() {
@@ -36,8 +37,9 @@ class Timer extends Component {
   }
   render() {
     const { number } = this.state;
+    const styles = {color: "red", fontSize: '20px', fontWeight:'bold'};
     return (
-      <div>
+      <div style = {styles}>
         <p>{number}</p>
         <button onClick={this.decrementNumber}>Decrement</button>
       </div>
