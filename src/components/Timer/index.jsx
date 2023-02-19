@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Timer extends Component {
   state = {
     number: 10,
-    isDoubled: true,
+    isDoubled: false,
   };
 
   decrementNumber = () => {
@@ -37,7 +37,7 @@ class Timer extends Component {
   }
   render() {
     const { number } = this.state;
-    const styles = {color: "red", fontSize: '20px', fontWeight:'bold'};
+    const styles = {color: number > 0 ? "green": "red", fontSize: '20px', fontWeight:'bold'};
     return (
       <div style = {styles}>
         <p>{number}</p>
