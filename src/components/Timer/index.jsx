@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styles from "./Timer.module.css"
 
 class Timer extends Component {
   state = {
@@ -36,11 +37,11 @@ class Timer extends Component {
   }
   render() {
     const { number } = this.state;
-    const styles = {color: number > 0 ? "green": "red", fontSize: '20px', fontWeight:'bold'};
+    const parStyles = {color: number > 0 ? "green": "red", fontSize: '20px', fontWeight:'bold'};
     return (
-      <div style = {styles}>
-        <p>{number}</p>
-        <button onClick={this.decrementNumber}>Decrement</button>
+      <div>
+        <p style = {parStyles}>{number}</p>
+        <button className= {styles.btn} onClick={this.decrementNumber}>Decrement</button>
       </div>
     );
   }
