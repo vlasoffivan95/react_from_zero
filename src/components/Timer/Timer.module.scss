@@ -1,0 +1,18 @@
+@use '../../common/styles/variables' as *;
+
+.btn {
+    background-color:$btn-bg-color;
+    color:$btn-color;
+    padding: 15px 25px;
+    border-radius: 20px;
+    border:2px solid black;
+    margin-top: 10px;
+
+
+
+&:hover {
+    background-color: blue;
+    color: $btn-bg-hover-color;
+    color: $btn-bg-color;
+}
+}
