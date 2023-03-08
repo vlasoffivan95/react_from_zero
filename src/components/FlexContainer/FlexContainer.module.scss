@@ -5,16 +5,17 @@
     background-color: lightblue;
 }
 
-.jc-center {
+.jcCenter {
     justify-content: center;
     font-size:50px;
 }
 
-.jc-flexstart {
+.jcFlexstart {
     justify-content: flex-start;
+    background-color: blue;
 }
 
-.ai-center {
+.aiCenter {
     align-items: center;
     background-color: red;
 }
