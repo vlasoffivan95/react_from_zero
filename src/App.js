@@ -1,7 +1,7 @@
 import "./App.css";
-import Timer from "./components/Timer";
 import React from "react";
-import List from "./components/List";
+import FlexContainer from "./components/FlexContainer";
+import FlexContain from "./components/FlexContain";
 
 class App extends React.Component {
   state = {
@@ -10,14 +10,13 @@ class App extends React.Component {
   render() {
     return (
       <main className="container">
-        <List>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-
-        </List>
+        <FlexContain justifyContent = 'center' alignItems= 'flex-end'>
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>4</span>
+          <span>5</span>
+        </FlexContain>
       </main>
     );
   }
