@@ -33,7 +33,7 @@ class App extends React.Component {
           headerProp1={true}
           headerProp2={"kek"}
           otherProp1={12345}
-          user={user}
+          user={{id: 1234444, name:'kekekek', src:'sfsdfsdf'}}
           logout={this.logout}
         />
       </>

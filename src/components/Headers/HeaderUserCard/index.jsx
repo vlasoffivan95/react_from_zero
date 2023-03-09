@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from 'prop-types'
+import { userProps } from "..";
 
 const HeaderUserCard = (props) => {
   const { user, logout } = props;
@@ -20,5 +22,12 @@ const HeaderUserCard = (props) => {
     </div>
   );
 };
+
+
+
+HeaderUserCard.propTypes = {
+logout: PropTypes.func.isRequired,
+user: userProps
+}
 
 export default HeaderUserCard;
