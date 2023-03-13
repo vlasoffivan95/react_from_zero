@@ -1,6 +1,8 @@
 import "./App.css";
 import React from "react";
 import Headers from "./components/Headers";
+import SignUpForm from "./components/SignUpForms";
+
 
 class App extends React.Component {
   constructor(props) {
@@ -31,11 +33,11 @@ class App extends React.Component {
       <>
         <Headers
           headerProp1={true}
-          headerProp2={"kek"}
           otherProp1={12345}
           user={{id: 1234444, name:'kekekek', src:'sfsdfsdf'}}
           logout={this.logout}
         />
+        <SignUpForm/>
       </>
     );
   }
