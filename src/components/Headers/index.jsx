@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import HeaderUserCard from "./HeaderUserCard";
+import HeaderUserCard, {userProps} from "./HeaderUserCard";
 import PropTypes from 'prop-types'
 
 class Headers extends Component {
@@ -21,13 +21,8 @@ class Headers extends Component {
 Headers.propTypes = {
   headerProp1: PropTypes.bool,
   headerProp2: PropTypes.number,
-  logout:PropTypes.func.isRequired
+  logout:PropTypes.func.isRequired,
+  user: userProps
 }
-
-export const userProps = PropTypes.exact( {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
-})
 
 export default Headers;
