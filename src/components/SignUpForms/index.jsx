@@ -1,16 +1,31 @@
 import React, { Component } from "react";
 import styles from "./SignUpForm.module.scss";
 
+function signUp(userData) {
+  console.log(`${userData.email} ${userData.password} is registered`);
+}
+
+const initialState = {
+  email: "",
+  password: "",
+  accountLevel: "basic",
+};
+
 class SignUpForm extends Component {
   state = {
-    email: "",
-    password: "",
+    ...initialState,
   };
 
   submitHandler = (e) => {
+    const { email, password } = this.state;
     e.preventDefault();
-    console.log(e.target.password.value);
-    console.log(e.target.email.value);
+    signUp({
+      email,
+      password,
+    });
+    this.setState({
+      ...initialState,
+    });
   };
   handleEmailChange = (e) => {
     this.setState({
@@ -24,19 +39,18 @@ class SignUpForm extends Component {
     });
   };
 
-handleChange = (e) => {
+  handleChange = (e) => {
     const {
-        target: {value, name}
-    } = e
+      target: { value, name },
+    } = e;
 
     this.setState({
-        [name]:value
-    })
-}
-
+      [name]: value,
+    });
+  };
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, accountLevel } = this.state;
     return (
       <form onSubmit={this.submitHandler} className={styles.form}>
         <input
@@ -53,6 +67,16 @@ handleChange = (e) => {
           value={password}
           onChange={this.handleChange}
         ></input>
+        <select
+          className={styles.input}
+          name="accountLevel"
+          value={accountLevel}
+          onChange={this.handleChange}
+        >
+          <option value="basic">Basic</option>
+          <option value="adv">Adv</option>
+          <option value="pro">Pro</option>
+        </select>
         <button className={styles.btn} type="submit">
           Sign Up
         </button>
