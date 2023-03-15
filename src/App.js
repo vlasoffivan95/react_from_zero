@@ -46,7 +46,7 @@ class App extends React.Component {
 
           <Route path="/" exact component={Home} />
 
-          <Route path="*" component={NotFoundPage} />
+          <Route path="*">{() => <NotFoundPage />}</Route>
         </Switch>
 
         <Footer />
