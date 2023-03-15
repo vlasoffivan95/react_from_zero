@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 import Headers from "./components/Headers";
 import SignUpForm from "./components/SignUpForms";
-
+import { Switch, Route, Link } from "react-router-dom/cjs/react-router-dom.min";
 
 class App extends React.Component {
   constructor(props) {
@@ -34,13 +34,57 @@ class App extends React.Component {
         <Headers
           headerProp1={true}
           otherProp1={12345}
-          user={{id: 1234444, name:'kekekek', src:'sfsdfsdf'}}
+          user={{ id: 1234444, name: "kekekek", src: "sfsdfsdf" }}
           logout={this.logout}
         />
-        <SignUpForm/>
+        {/* <SignUpForm/> */}
+
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+
+          <Route path="/contact">
+            <Contacts />
+          </Route>
+
+          <Route path="/" exact>
+            <Home />
+          </Route>
+        </Switch>
+
+        <Footer />
       </>
     );
   }
+}
+
+function About() {
+  return (
+    <main>
+      <h1>About page</h1>
+    </main>
+  );
+}
+
+function Home() {
+  return (
+    <main>
+      <h1>Home page</h1>
+    </main>
+  );
+}
+
+function Contacts() {
+  return (
+    <main>
+      <h1>Contacts 380955799657</h1>
+    </main>
+  );
+}
+
+function Footer() {
+  return <footer>This is footer</footer>;
 }
 
 export default App;
