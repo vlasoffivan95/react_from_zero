@@ -31,12 +31,7 @@ class App extends React.Component {
     const userProps = { user, logout: this.logout };
     return (
       <>
-        <Headers
-          headerProp1={true}
-          otherProp1={12345}
-          user={{ id: 1234444, name: "kekekek", src: "sfsdfsdf" }}
-          logout={this.logout}
-        />
+        <Headers/>
         {/* <SignUpForm/> */}
 
         <Switch>
