@@ -40,23 +40,27 @@ class App extends React.Component {
         {/* <SignUpForm/> */}
 
         <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
+          <Route path="/about" component={About} />
 
-          <Route path="/contact">
-            <Contacts />
-          </Route>
+          <Route path="/contact" render={() => <Contacts />} />
 
-          <Route path="/" exact>
-            <Home />
-          </Route>
+          <Route path="/" exact component={Home} />
+
+          <Route path="*" component={NotFoundPage} />
         </Switch>
 
         <Footer />
       </>
     );
   }
+}
+
+function NotFoundPage() {
+  return (
+    <main>
+      <h2>Not found page</h2>
+    </main>
+  );
 }
 
 function About() {
