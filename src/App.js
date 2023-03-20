@@ -1,89 +1,31 @@
 import "./App.css";
 import React from "react";
 import Headers from "./components/Headers";
-import SignUpForm from "./components/SignUpForms";
-import { Switch, Route, Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
+import Home from "./pages/HomePage";
+import NotFoundPage from "./pages/NotFoundPage";
+import About from "./pages/About";
+import Contacts from "./pages/Contacts";
+import Footer from "./pages/Footer";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isVisible: true,
-
-      user: {
-        id: 123456,
-        name: "User",
-        src: "sdfsdfsdf.jpg",
-      },
-    };
-    this.intervalId = null;
-  }
-
-  logout = () => {
-    this.setState({
-      user: null,
-    });
-    alert("Exit");
-  };
-
-  render() {
-    const { user } = this.state;
-    const userProps = { user, logout: this.logout };
-    return (
-      <>
-        <Headers/>
-        {/* <SignUpForm/> */}
-
-        <Switch>
-          <Route path="/about" component={About} />
-
-          <Route path="/contact" render={() => <Contacts />} />
-
-          <Route path="/" exact component={Home} />
-
-          <Route path="*">{() => <NotFoundPage />}</Route>
-        </Switch>
-
-        <Footer />
-      </>
-    );
-  }
-}
-
-function NotFoundPage() {
+function App() {
   return (
-    <main>
-      <h2>Not found page</h2>
-    </main>
-  );
-}
+    <>
+      <Headers />
 
-function About() {
-  return (
-    <main>
-      <h1>About page</h1>
-    </main>
-  );
-}
+      <Switch>
+        <Route path="/about" component={About} />
 
-function Home() {
-  return (
-    <main>
-      <h1>Home page</h1>
-    </main>
-  );
-}
+        <Route path="/contact" render={() => <Contacts />} />
 
-function Contacts() {
-  return (
-    <main>
-      <h1>Contacts 380955799657</h1>
-    </main>
-  );
-}
+        <Route path="/" exact component={Home} />
 
-function Footer() {
-  return <footer>This is footer</footer>;
+        <Route path="*">{() => <NotFoundPage />}</Route>
+      </Switch>
+
+      <Footer />
+    </>
+  );
 }
 
 export default App;
