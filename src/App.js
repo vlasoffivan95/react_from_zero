@@ -14,7 +14,7 @@ function App() {
       <Headers />
 
       <Switch>
-        <Route path="/about" component={About} />
+        <Route path="/about" render={(routeProps) => <About {...routeProps}></About> } />
 
         <Route path="/contact" render={() => <Contacts />} />
 
