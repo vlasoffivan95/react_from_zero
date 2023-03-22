@@ -17,7 +17,7 @@ class UsersLoader extends Component {
   }
 
   mapUsers = (user) => (
-    <div key={user.id}>
+    <div key={user.login.uuid}>
       <pre>{JSON.stringify(user, undefined, 4)}</pre>
     </div>
   );
