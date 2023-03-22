@@ -7,6 +7,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import About from "./pages/About";
 import Contacts from "./pages/Contacts";
 import Footer from "./pages/Footer";
+import UsersPage from "./pages/UsersPage";
 
 function App() {
   return (
@@ -14,11 +15,15 @@ function App() {
       <Headers />
 
       <Switch>
-        <Route path="/about" render={(routeProps) => <About {...routeProps}></About> } />
+        <Route
+          path="/about"
+          render={(routeProps) => <About {...routeProps}></About>}
+        />
 
         <Route path="/contact" render={() => <Contacts />} />
 
         <Route path="/" exact component={Home} />
+        <Route path="/users" component={UsersPage} />
 
         <Route path="*">{() => <NotFoundPage />}</Route>
       </Switch>
