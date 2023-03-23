@@ -1,12 +1,13 @@
 import queryString from "query-string";
+import API_CONSTANTS from "../configs";
 
 export function getUsers(options) {
   const defaultOptions = {
-    page: 1,
-    results: 10,
-    seed: "foobar",
-    nat: "ua",
-    inc: ["gender", "name", "location", "email", "login"],
+    page: API_CONSTANTS.PAGE,
+    results: API_CONSTANTS.RESULTS,
+    seed: API_CONSTANTS.SEED,
+    nat: API_CONSTANTS.NATIONALITY,
+    inc: API_CONSTANTS.INCLUDES,
   };
 
   const finalOptions = { ...defaultOptions, ...options };
@@ -14,7 +15,7 @@ export function getUsers(options) {
   const query = queryString.stringify(finalOptions, { arrayFormat: "comma" });
   console.log(query);
 
-  const promise = fetch(`https://randomuser.me/api/?${query}`)
+  const promise = fetch(`${API_CONSTANTS.BASE_URL}?${query}`)
     .then((res) => res.json())
     .then((data) => data.results);
 
