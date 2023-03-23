@@ -8,6 +8,8 @@ import About from "./pages/About";
 import Contacts from "./pages/Contacts";
 import Footer from "./pages/Footer";
 import UsersPage from "./pages/UsersPage";
+import PostsPage from "./pages/PostsPage";
+
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
 
         <Route path="/" exact component={Home} />
         <Route path="/users" component={UsersPage} />
+        <Route path="/posts" component={PostsPage} />
 
         <Route path="*">{() => <NotFoundPage />}</Route>
       </Switch>
