@@ -9,31 +9,50 @@ import Contacts from "./pages/Contacts";
 import Footer from "./pages/Footer";
 import UsersPage from "./pages/UsersPage";
 import PostsPage from "./pages/PostsPage";
+import Tree from "./components/Tree";
 
+export const ProductContext = React.createContext();
+export const ThemeContext = React.createContext();
 
-function App() {
-  return (
-    <>
-      <Headers />
+class App extends React.Component {
+  state = {
+    product: {
+      id: 5,
+      name: "mobila",
+      price: 1000,
+    },
 
-      <Switch>
-        <Route
-          path="/about"
-          render={(routeProps) => <About {...routeProps}></About>}
-        />
+    theme: "light",
+  };
+  render() {
+    const { product, theme } = this.state;
 
-        <Route path="/contact" render={() => <Contacts />} />
+    return (
+      <ProductContext.Provider value={product}>
+        <ThemeContext.Provider value = {theme}>
+        <Headers />
 
-        <Route path="/" exact component={Home} />
-        <Route path="/users" component={UsersPage} />
-        <Route path="/posts" component={PostsPage} />
+        <Tree />
 
-        <Route path="*">{() => <NotFoundPage />}</Route>
-      </Switch>
+        <Switch>
+          <Route
+            path="/about"
+            render={(routeProps) => <About {...routeProps}></About>}
+          />
 
-      <Footer />
-    </>
-  );
+          <Route path="/contact" render={() => <Contacts />} />
+
+          <Route path="/" exact component={Home} />
+          <Route path="/users" component={UsersPage} />
+          <Route path="/posts" component={PostsPage} />
+
+          <Route path="*">{() => <NotFoundPage />}</Route>
+        </Switch>
+
+        <Footer />
+        </ThemeContext.Provider>
+      </ProductContext.Provider>
+    );
+  }
 }
-
 export default App;
