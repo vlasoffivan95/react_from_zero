@@ -1,5 +1,5 @@
 import React from "react";
-import { THEMES } from "../../../App";
+import CONSTANTS from "../../../constants";
 import { ProductContext, ThemeContext } from "../../../context";
 
 const SomeArticle = (props) => {
@@ -7,7 +7,7 @@ const SomeArticle = (props) => {
     <ThemeContext.Consumer>
       {([theme, onClick]) => {
         const styles = {
-          backgroundColor: theme === THEMES.LIGHT ? 'lightgray' : 'black'
+          backgroundColor: theme === CONSTANTS.THEMES.LIGHT ? 'lightgray' : 'black'
 
         }
         return (

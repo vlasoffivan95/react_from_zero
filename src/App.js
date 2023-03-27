@@ -11,13 +11,11 @@ import UsersPage from "./pages/UsersPage";
 import PostsPage from "./pages/PostsPage";
 import Tree from "./components/Tree";
 import { ProductContext, ThemeContext} from "./context";
+import CONSTANTS from "./constants";
 
 
 
-export const THEMES = {
-  LIGHT: "light",
-  DARK: "dark",
-};
+
 
 class App extends React.Component {
   state = {
@@ -27,13 +25,13 @@ class App extends React.Component {
       price: 1000,
     },
 
-    theme: THEMES.LIGHT,
+    theme: CONSTANTS.THEMES.LIGHT,
   };
 
   changeTheme = () => {
     const { theme } = this.state;
     this.setState({
-      theme: theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT,
+      theme: theme === CONSTANTS.THEMES.LIGHT ? CONSTANTS.THEMES.DARK : CONSTANTS.THEMES.LIGHT,
     });
   };
   render() {
