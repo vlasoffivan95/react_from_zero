@@ -10,9 +10,9 @@ import Footer from "./pages/Footer";
 import UsersPage from "./pages/UsersPage";
 import PostsPage from "./pages/PostsPage";
 import Tree from "./components/Tree";
+import { ProductContext, ThemeContext} from "./context";
 
-export const ProductContext = React.createContext();
-export const ThemeContext = React.createContext();
+
 
 export const THEMES = {
   LIGHT: "light",
