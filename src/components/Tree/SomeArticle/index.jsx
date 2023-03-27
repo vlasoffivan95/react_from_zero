@@ -1,12 +1,12 @@
 import React from "react";
-import { ProductContext, ThemeContext } from "../../../App";
+import { ProductContext, ThemeContext, THEMES } from "../../../App";
 
 const SomeArticle = (props) => {
   return (
     <ThemeContext.Consumer>
-      {(theme) => {
+      {([theme, onClick]) => {
         const styles = {
-          backgroundColor: theme === 'light' ? 'lightgray' : 'darkgrey'
+          backgroundColor: theme === THEMES.LIGHT ? 'lightgray' : 'black'
 
         }
         return (
@@ -14,6 +14,7 @@ const SomeArticle = (props) => {
             {(contextValue) => (
               <article style = {styles}>
                 <h5>Article</h5>
+                <button onClick = {onClick}>Change Theme</button>
                 <div>{JSON.stringify(contextValue)}</div>
               </article>
             )}

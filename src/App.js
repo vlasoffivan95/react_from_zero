@@ -14,6 +14,11 @@ import Tree from "./components/Tree";
 export const ProductContext = React.createContext();
 export const ThemeContext = React.createContext();
 
+export const THEMES = {
+  LIGHT: "light",
+  DARK: "dark",
+};
+
 class App extends React.Component {
   state = {
     product: {
@@ -22,34 +27,41 @@ class App extends React.Component {
       price: 1000,
     },
 
-    theme: "light",
+    theme: THEMES.LIGHT,
+  };
+
+  changeTheme = () => {
+    const { theme } = this.state;
+    this.setState({
+      theme: theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT,
+    });
   };
   render() {
     const { product, theme } = this.state;
 
     return (
       <ProductContext.Provider value={product}>
-        <ThemeContext.Provider value = {theme}>
-        <Headers />
+        <ThemeContext.Provider value={[theme, this.changeTheme]}>
+          <Headers />
 
-        <Tree />
+          <Tree />
 
-        <Switch>
-          <Route
-            path="/about"
-            render={(routeProps) => <About {...routeProps}></About>}
-          />
+          <Switch>
+            <Route
+              path="/about"
+              render={(routeProps) => <About {...routeProps}></About>}
+            />
 
-          <Route path="/contact" render={() => <Contacts />} />
+            <Route path="/contact" render={() => <Contacts />} />
 
-          <Route path="/" exact component={Home} />
-          <Route path="/users" component={UsersPage} />
-          <Route path="/posts" component={PostsPage} />
+            <Route path="/" exact component={Home} />
+            <Route path="/users" component={UsersPage} />
+            <Route path="/posts" component={PostsPage} />
 
-          <Route path="*">{() => <NotFoundPage />}</Route>
-        </Switch>
+            <Route path="*">{() => <NotFoundPage />}</Route>
+          </Switch>
 
-        <Footer />
+          <Footer />
         </ThemeContext.Provider>
       </ProductContext.Provider>
     );
