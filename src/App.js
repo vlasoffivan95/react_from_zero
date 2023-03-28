@@ -10,6 +10,7 @@ import Footer from "./pages/Footer";
 import UsersPage from "./pages/UsersPage";
 import PostsPage from "./pages/PostsPage";
 import Tree from "./components/Tree";
+import SomeArticleWithProduct from "./components/Tree/SomeArticle";
 import {
   ProductContext,
   ThemeContext,
@@ -46,36 +47,33 @@ class App extends React.Component {
     const { product, theme, userName, srcImage } = this.state;
 
     return (
-      // <ProductContext.Provider value={product}>
-      //   <ThemeContext.Provider value={[theme, this.changeTheme]}>
-      <>
-        <Headers />
+      <ProductContext.Provider value={product}>
+        <ThemeContext.Provider value={[theme, this.changeTheme]}>
+          <Headers />
 
-        <Tree />
+          <Tree />
 
-        <Switch>
-          <Route
-            path="/about"
-            render={(routeProps) => <About {...routeProps}></About>}
-          />
-          <SrcContext.Provider value = {srcImage}>
-          <Route path="/provider" exact component={HeadersWithContext} />
-          </SrcContext.Provider>
+          <Switch>
+            <Route
+              path="/about"
+              render={(routeProps) => <About {...routeProps}></About>}
+            />
+            <SrcContext.Provider value={srcImage}>
+              <Route path="/provider" exact component={HeadersWithContext} />
+            </SrcContext.Provider>
 
-          <Route path="/contact" render={() => <Contacts />} />
+            <Route path="/contact" render={() => <Contacts />} />
 
-          <Route path="/" exact component={Home} />
-          <Route path="/users" component={UsersPage} />
-          <Route path="/posts" component={PostsPage} />
+            <Route path="/" exact component={Home} />
+            <Route path="/users" component={UsersPage} />
+            <Route path="/posts" component={PostsPage} />
 
-          <Route path="*">{() => <NotFoundPage />}</Route>
-        </Switch>
+            <Route path="*">{() => <NotFoundPage />}</Route>
+          </Switch>
 
-        <Footer />
-
-        {/* </ThemeContext.Provider>
-      </ProductContext.Provider> */}
-      </>
+          <Footer />
+        </ThemeContext.Provider>
+      </ProductContext.Provider>
     );
   }
 }
