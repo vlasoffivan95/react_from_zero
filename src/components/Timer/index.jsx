@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styles from "./Timer.module.scss"
 
-class Timer extends Component {
+class Timers extends Component {
   state = {
     number: 10,
     isDoubled: false,
@@ -47,4 +47,4 @@ class Timer extends Component {
   }
 }
 
-export default Timer;
+export default Timers;
