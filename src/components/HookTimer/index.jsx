@@ -7,20 +7,22 @@ const Timer = (props) => {
   const [intervalId, setIntervalId] = useState(null);
 
   useEffect(function effect() {
-    console.log('did mount + did update')
-    // let intervalId = setInterval(tick, 1000)
-    document.addEventListener('click', handleClick)
+    console.log("did mount + did update");
+    // // let intervalId = setInterval(tick, 1000)
+    // document.addEventListener('click', handleClick)
     return function cleanup() {
-      console.log('will unmount')
-      document.removeEventListener('click', handleClick)
-    }
-
+      console.log("will unmount");
+      // document.removeEventListener('click', handleClick)
+    };
   });
 
-  const handleClick = () => {
-    console.log('click')
-  }
+  useEffect(() => {
+    console.log("effect2");
+  }, [currentNumber]);
 
+  const handleClick = () => {
+    console.log("click");
+  };
 
   const handleChange = (e) => {
     const {
