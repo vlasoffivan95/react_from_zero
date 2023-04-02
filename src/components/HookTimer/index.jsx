@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Timer = (props) => {
   const [startingNumber, setStartingNumber] = useState(0);
   const [currentNumber, setCurrentNumber] = useState(0);
   const [isStarted, setIsStarted] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
+
+  useEffect(function effect() {
+    console.log('testing')
+
+  });
 
   const handleChange = (e) => {
     const {
