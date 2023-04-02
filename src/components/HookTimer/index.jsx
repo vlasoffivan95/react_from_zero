@@ -7,9 +7,20 @@ const Timer = (props) => {
   const [intervalId, setIntervalId] = useState(null);
 
   useEffect(function effect() {
-    console.log('testing')
+    console.log('did mount + did update')
+    // let intervalId = setInterval(tick, 1000)
+    document.addEventListener('click', handleClick)
+    return function cleanup() {
+      console.log('will unmount')
+      document.removeEventListener('click', handleClick)
+    }
 
   });
+
+  const handleClick = () => {
+    console.log('click')
+  }
+
 
   const handleChange = (e) => {
     const {
@@ -23,7 +34,7 @@ const Timer = (props) => {
     if (!isStarted) {
       setIsStarted(true);
       setCurrentNumber(startingNumber);
-      setIntervalId(setInterval(tick, 1000));
+      // setIntervalId(setInterval(tick, 1000));
     }
   };
 
