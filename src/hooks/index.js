@@ -1,15 +1,14 @@
-import * as API from 'api'
 import { useEffect, useState } from 'react';
 
 
-export function useData() {
+export function useData(getData) {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, SetError] = useState(null);
   
     const load = () => {
       setIsLoading(true);
-      API.getOtherUsers()
+      getData()
         .then((loadedData) => {
           setData(loadedData);
         })

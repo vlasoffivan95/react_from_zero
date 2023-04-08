@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useData } from "hooks";
+import * as API from "api";
 
 const UsersLoader = (props) => {
-  const { data: users, isLoading, error } = useData();
+  const { data: users, isLoading, error } = useData(API.getOtherUsers);
   const userList = users.map((user) => (
     <article key={user.id}>
       <h2>Name: {user.name}</h2>
