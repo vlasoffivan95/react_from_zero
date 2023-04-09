@@ -16,7 +16,7 @@ const UsersLoader = (props) => {
 
   return (
     <div>
-      <h2>Clicks: {clicks}</h2>
+      <h2>Clicks: {clicks} </h2>
       {isLoading && <div>Loading....</div>}
       {error && <div>Error</div>}
       {users.length > 0 && userList}
