@@ -26,18 +26,23 @@ export function useData(getData) {
   return { data, isLoading, error };
 }
 
-export function useClicker() {
+export function useClicker(elemRef) {
   const [clicks, setClicks] = useState(0);
   const clickListener = () => setClicks((clicksState) => clicksState + 1);
 
   useEffect(() => {
-    document.addEventListener("click", clickListener);
+    const elem = elemRef.current;
+
+    if (elem) {
+      elem.addEventListener("click", clickListener);
+    }
+
     return () => {
-      document.removeEventListener("click", clickListener);
+      if (elem) {
+        elem.removeEventListener("click", clickListener);
+      }
     };
-  }, []);
+  }, [elemRef]);
 
   return clicks;
 }
-
-
