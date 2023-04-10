@@ -28,9 +28,9 @@ const RefClicker = () => {
   //     setValue(e.target.value);
   //   };
 
-  const logValue = () => {
-    console.log(`value is ${value}`);
-  };
+  //   const logValue = () => {
+  //     console.log(`value is ${value}`);
+  //   };
 
   const handleChange = useCallback((e) => {
     setValue(e.target.value);
@@ -39,6 +39,10 @@ const RefClicker = () => {
   useEffect(() => {
     console.log("handleChange created");
   }, [handleChange]);
+
+  const logValue = useCallback(() => {
+    console.log(`${value}`);
+  }, [value]);
 
   return (
     <div>
