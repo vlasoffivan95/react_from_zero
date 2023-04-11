@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from "react";
-import { useClicker } from "hooks";
+import  {useClicker}  from "hooks";
 import { useRef, useState } from "react";
 
 const RefClicker = () => {
