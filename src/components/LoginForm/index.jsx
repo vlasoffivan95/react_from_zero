@@ -2,9 +2,10 @@ import React, { useState, useReducer } from "react";
 import { act } from "react-dom/test-utils";
 
 function reducer(state, action) {
+  const { type, payload } = action;
   const newState = {
     ...state,
-    [action.name] : action.newData
+    [type]: payload,
   };
   return newState;
 }
@@ -20,7 +21,7 @@ const LoginForm = (props) => {
 
   const handleChange = ({ target: { value, checked, name, type } }) => {
     const newData = type === "checkbox" ? checked : value;
-    const action = { name, newData };
+    const action = { type: name, payload: newData };
     dispatch(action);
   };
 
