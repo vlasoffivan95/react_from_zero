@@ -1,53 +1,7 @@
 import React, { useReducer } from "react";
-
-const initialState = {
-  count: 0,
-  step: 1,
-};
-
-const ACTION_TYPES = {
-  INCREMENT: "increment",
-  DECREMENT: "decrement",
-  CHANGE_STEP: "changeStep",
-  RESET: "reset",
-};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case ACTION_TYPES.INCREMENT: {
-      const newState = { ...state, count: state.count + state.step };
-      return newState;
-    }
-    case ACTION_TYPES.DECREMENT: {
-      const newState = { ...state, count: state.count - state.step };
-      return newState;
-    }
-    case ACTION_TYPES.CHANGE_STEP: {
-      const newStep = { ...state, step: action.payload };
-      return newStep;
-    }
-    case ACTION_TYPES.RESET: {
-      const newState = { ...initialState };
-      return newState;
-    }
-    default:
-      return state;
-  }
-}
-
-function increment() {
-  const action = { type: ACTION_TYPES.INCREMENT };
-  return action;
-}
-
-function decrement() {
-  const action = { type: ACTION_TYPES.DECREMENT };
-  return action;
-}
-
-function changeStep(step) {
-  return { type: ACTION_TYPES.CHANGE_STEP, payload: +step };
-}
+import ACTION_TYPES from "./actionTypes";
+import { increment, decrement, changeStep } from "./actionCreators";
+import { initialState, reducer } from "./reducer";
 
 const Counter = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
