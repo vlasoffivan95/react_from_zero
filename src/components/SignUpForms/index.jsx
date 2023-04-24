@@ -2,12 +2,28 @@ import React, { useState } from "react";
 import styles from "./SignUpForm.module.scss";
 import * as yup from "yup";
 
-const SIGN_UP_SCHEMA = yup.shape({
-  email: yup.string().required(),
-  firstName: yup.string().required(),
-  lastName: yup.string().required(),
-  password: yup.string().required(),
+const SIGN_UP_SCHEMA = yup.object({
+  email: yup.email().required(),
+  firstName: yup.string().min(1).max(128).required(),
+  lastName: yup.string().min(1).max(128).required(),
+  password: yup.string().min(8).required(),
 });
+
+const user1 = {
+  email: 12345,
+  password: true,
+  firstName: "",
+  lastName: "Ivanov",
+};
+
+const user2 = {
+  email: "dedgro@gmail.com",
+  password: "Qwerty12345",
+  firstName: "test",
+  lastName: "anton",
+};
+
+
 
 function SignUpForm(props) {
   const [email, setEmail] = useState("");
