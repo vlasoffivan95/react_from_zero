@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import styles from "./SignUpForm.module.scss";
-import * as yup from "yup";
+import { SIGN_UP_SCHEMA } from "utils/validators/validationSchema";
 
-const SIGN_UP_SCHEMA = yup.object({
-  email: yup.string().email().required(),
-  firstName: yup.string().min(1).max(128).required(),
-  lastName: yup.string().min(1).max(128).required(),
-  password: yup.string().min(8).required(),
-});
+
 
 const user1 = {
   email: 12345,
@@ -23,7 +18,30 @@ const user2 = {
   lastName: "anton",
 };
 
+const isValid1 = SIGN_UP_SCHEMA.isValidSync(user1);
+const isValid2 = SIGN_UP_SCHEMA.isValidSync(user2);
+console.log(isValid1);
+console.log(isValid2);
 
+try {
+  const validate1 = SIGN_UP_SCHEMA.validateSync(user1, {
+    strict: true,
+    abortEarly: false,
+  });
+  console.log(validate1);
+} catch (error) {
+  console.dir(error);
+}
+
+try {
+  const validate1 = SIGN_UP_SCHEMA.validateSync(user2, {
+    strict: true,
+    abortEarly: false,
+  });
+  console.log(validate1);
+} catch (error) {
+  console.dir(error);
+}
 
 function SignUpForm(props) {
   const [email, setEmail] = useState("");
