@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Field, Form } from "formik";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import styles from "./SignUpForm.module.scss";
 import { SIGN_UP_SCHEMA } from "utils/validators/validationSchema";
 
@@ -28,8 +28,11 @@ function SignUpForm(props) {
     >
       <Form className={styles.form}>
         <Field className={styles.input} type="email" name="email" placeholder="email"/>
+        <ErrorMessage name = 'email' />
         <Field className={styles.input} type="password" name="password" placeholder="password" />
+        <ErrorMessage name = 'password' />
         <Field className={styles.input} type="text" name="name" placeholder="name"/>
+        <ErrorMessage name = 'name' className = "error" component="div"/>
         <Field name="accountLevel" as="select">
           <option value="basic">Basic</option>
           <option value="middle">Middle</option>
