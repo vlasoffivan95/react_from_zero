@@ -14,7 +14,18 @@ export const SIGN_UP_SCHEMA = yup.object({
   accountLevel: yup.string().required(),
 });
 
+export const PRODUCT_SCHEMA = yup.object({
+  name: yup.string().required(),
+  desciption:yup.string(),
+  price:yup.number().required().integer()
+})
+
 export const LOGIN_SCHEMA = yup.object({
   email: EMAIL_SCHEMA,
   password: yup.string().min(8).required(),
 });
+
+
+PRODUCT_SCHEMA.validate({
+  
+})

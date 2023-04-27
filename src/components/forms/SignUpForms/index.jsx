@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import styles from "./SignUpForm.module.scss";
 import { SIGN_UP_SCHEMA } from "utils/validators/validationSchema";
+import CustomInput from "../CustomInput";
 
 const initialState = {
   email: "",
@@ -27,6 +28,7 @@ function SignUpForm(props) {
       validationSchema={SIGN_UP_SCHEMA}
     >
       <Form className={styles.form}>
+        <CustomInput tupe="text" name="name" placeholder="name"/>
         <Field className={styles.input} type="email" name="email" placeholder="email"/>
         <ErrorMessage name = 'email' />
         <Field className={styles.input} type="password" name="password" placeholder="password" />
