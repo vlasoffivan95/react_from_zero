@@ -1,4 +1,3 @@
-console.log("hi");
 const fs = require("fs/promises");
 
 // const promise = new Promise((resolve, reject) => {
@@ -18,20 +17,22 @@ const fs = require("fs/promises");
 //     console.log(data);
 //   });
 
-async function test() {
-  const promise = new Promise((resolve, reject) => {
-    setTimeout(() => resolve(Promise.resolve(50)), 2000);
-  });
+// const arr = async () => {};
 
-  const p2 = promise.then((data) => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => resolve(Promise.resolve(50)), 2000);
+async function test() {
+  try {
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => resolve(Promise.reject(50)), 2000);
     });
-  });
-  //   promise.then(data=>console.log(data))
-  const data = await p2;
-  console.log(data);
+    const data = await promise;
+    console.log(data);
+    throw new Error("keks");
+  } catch (error) {
+    console.log("error huzpa");
+  }
 }
+
+test();
 
 // test().then((data) => console.log(data));
 
@@ -44,11 +45,10 @@ async function test() {
 //     .then((files) => console.log(files));
 // }
 
+// async function logFiles () {
+//     const filesArr = await fs.readdir(__dirname)
+//     const hiddenFiles = filesArr.filter((fileName)=> fileName[0]==='.')
+//     console.log(hiddenFiles)
+// }
 
-async function logFiles () {
-    const filesArr = await fs.readdir(__dirname)
-    const hiddenFiles = filesArr.filter((fileName)=> fileName[0]==='.')
-    console.log(hiddenFiles)
-}
-
-logFiles();
+// logFiles();
